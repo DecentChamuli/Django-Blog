@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block title %} Edit Account Info {% endblock %}
+
+{% block content %}
+<div class="my-5">
+    <h1>Edit Account Info</h1>
+    <hr>
+    {% comment %} <h2>{{ user.profile.bio }}</h2> {% endcomment %}
+    <div class="form-group">
+        <form method= "POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-dark">Update Account Info</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

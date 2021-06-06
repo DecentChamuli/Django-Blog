@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block title %} Edit Profile {% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.id == profile.user.id %}
+        <div class="my-4">
+            <h1>Edit Profile</h1>
+            <hr>
+            <div class="form-group">
+                <form method= "POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-dark">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <h3><b>You have no rights to Access this Page!</b></h3>
+    {% endif %}
+{% else %}
+    <h3><b>You have no rights to Access this Page!</b></h3>
+{% endif %}
+
+{% endblock %}
